@@ -1,0 +1,71 @@
+<h1 style="text-align: center; font-size: 99px; font-weight: bold; color: red; margin-top: 20px;">
+  K-BooM
+</h1>
+
+
+<img src="bomba.png" class="bomba-img" alt="Bomba">
+
+<div style=
+"display: flex;
+justify-content: center;
+gap: 20px;
+margin-top: 50px  
+">
+
+<button (click)="mostrarGaleria()"
+style="
+    
+    font-size: 28px;      /* tamaño grande */
+    font-weight: bold;    /* negrita */
+    padding: 15px 40px;   /* tamaño del botón */
+    border-radius: 12px;  /* bordes redondeados */
+    background-color: orange; /* color de fondo */
+    color: white;         /* color del texto */
+    border: none;
+    cursor: pointer;
+  "
+  >
+  Fotos
+</button>
+
+
+<div *ngIf="mostrarFotos" class="galeria">
+  <img *ngFor="let foto of fotos" [src]="foto" alt="Foto" class="foto-item">
+</div>
+
+
+<div class="clases-container">
+
+  
+  <button (click)="mostrarClases()"
+  style="
+    
+    font-size: 28px;      /* tamaño grande */
+    font-weight: bold;    /* negrita */
+    padding: 15px 40px;   /* tamaño del botón */
+    border-radius: 12px;  /* bordes redondeados */
+    background-color: orange; /* color de fondo */
+    color: white;         /* color del texto */
+    border: none;
+    cursor: pointer;
+    "
+  >
+  Clases
+</button>
+
+    <div *ngIf="verClases">
+          <h2>Clases del Gymnasio</h2>
+  
+          <ul>
+              <li *ngFor="let clase of listaClases">
+                    {{ clase.Nombre }} - {{clase.hora}}
+              </li>
+            
+          </ul>
+  
+    </div>
+
+   </div>
+
+</div>
+

@@ -1,0 +1,43 @@
+.bomba-img {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 80px;
+  height: auto;
+}
+
+body {
+  background-image: url('/fondo.png');  /* la ruta relativa a public */
+  background-size: cover;               /* ocupa toda la pantalla */
+  background-repeat: no-repeat;         /* no se repite */
+  background-position: center center;   /* centrado */
+  min-height: 100vh;                        /* ocupa 100% de la altura de la pantalla */
+  margin: 0;                             /* quita márgenes del body */
+}
+
+  /* ----    Estilos para las Clases  ----  */
+
+.clases-container h2 {
+  font-size: 50px;
+  text-transform: uppercase;
+  color: darkred;
+}
+
+.clases-container li {
+  font-size: 44px;   /* tamaño de letra de los items */
+  margin: 5px 0;
+}
+
+/* Solo el nombre de la clase */
+.nombre-clase {
+  color: blue;        /* color del nombre */
+  font-weight: bold;   /* opcional: que sea negrita */
+  font-size: 33px;     /* tamaño de letra específico */
+}
+
+/* Solo la hora */
+.hora-clase {
+  color: gray;         /* color de la hora */
+  font-size: 33px;     /* tamaño de letra de la hora */
+}
+
