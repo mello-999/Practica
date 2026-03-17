@@ -5,7 +5,9 @@
 
 <img src="bomba.png" class="bomba-img" alt="Bomba">
 
-<div style=
+<!-- Botones del Inicio -->
+
+<div *ngIf="!verClases  && !mostrarFotos" style=
 "display: flex;
 justify-content: center;
 gap: 20px;
@@ -28,16 +30,7 @@ style="
   Fotos
 </button>
 
-
-<div *ngIf="mostrarFotos" class="galeria">
-  <img *ngFor="let foto of fotos" [src]="foto" alt="Foto" class="foto-item">
-</div>
-
-
-<div class="clases-container">
-
-  
-  <button (click)="mostrarClases()"
+ <button (click)="mostrarClases()"
   style="
     
     font-size: 28px;      /* tamaño grande */
@@ -53,7 +46,11 @@ style="
   Clases
 </button>
 
-    <div *ngIf="verClases">
+</div>
+
+<!-- Seccion clases  -->
+
+<div *ngIf="verClases" class="clases-container">
           <h2>Clases del Gymnasio</h2>
   
           <ul>
@@ -62,10 +59,53 @@ style="
               </li>
             
           </ul>
-  
-    </div>
+ 
+            <button class="boton-atras" (click)="volverInicio()">
+               Atrás
+            </button>
 
    </div>
 
+<!-- Sección Fotos -->
+
+<div *ngIf="mostrarFotos" class="galeria-container">
+  <div class="galeria">
+    <img *ngFor="let foto of fotos; let i = index"
+     [src]="foto" 
+     alt="Foto" 
+     class="foto-item"
+     (click)="abrirFoto(i)">
+  </div>
+
+   <!-- Lightbox -->
+    <div class="lightbox" *ngIf="fotoSeleccionada">
+
+   <!-- Flecha Izquierda  -->
+
+     <div class="flecha izquierda" *ngIf="indiceFoto > 0" (click)="fotoAnterior()">&#10094;</div>
+
+      <img [src]="fotoSeleccionada" alt="Foto ampliada">
+    
+      <!-- Flecha Derecha -->
+
+      <div class="flecha derecha" *ngIf="indiceFoto < fotos.length -1" (click)="siguienteFoto()">&#10095;</div>
+
+      <!-- Cerrar hacuiendo clic fuera -->
+
+      <div class="cerrar" (click)="cerrarLightbox()"></div>
 </div>
+
+  <button class="boton-atras" (click)="volverInicio()">
+Atrás
+</button>
+
+</div>
+
+
+  
+ 
+    
+
+
+
 

@@ -19,16 +19,24 @@ body {
 
 .clases-container h2 {
   font-size: 50px;
+  text-align: center;
   text-transform: uppercase;
   color: darkred;
 }
 
+/* ---------------Li---------------------- */
+
 .clases-container li {
   font-size: 44px;   /* tamaño de letra de los items */
   margin: 5px 0;
+  line-height: 1.5; /* ajusta el espacio vertical */
+  
 }
+  
+  
 
 /* Solo el nombre de la clase */
+
 .nombre-clase {
   color: blue;        /* color del nombre */
   font-weight: bold;   /* opcional: que sea negrita */
@@ -41,3 +49,143 @@ body {
   font-size: 33px;     /* tamaño de letra de la hora */
 }
 
+   /* ---Css para el Boton atras dentro de clases--- */
+
+   .boton-atras {
+  display: block;        /* hace que el botón se comporte como bloque */
+  margin: 40px auto 0;   /* arriba 40px, izquierda y derecha auto = centro */
+  margin-top: 20px;          /* separación arriba */
+    padding: 10px 20px;        /* tamaño del botón */
+  font-size: 18px;            /* tamaño del texto */
+  font-weight: bold;        /* Para que las letras se vean en negrita */
+  background-color: darkred;  /* color de fondo */
+  color: darkred;               /* color del texto */
+  border: none;               /* sin borde */
+  border-radius: 8px;         /* bordes redondeados */
+  cursor: pointer;            /* cambia el cursor al pasar el mouse */
+  transition: background 0.3s; /* transición suave al pasar el mouse */
+}
+
+/* Efecto hover (cuando el mouse pasa por encima) */
+.boton-atras:hover {
+  background-color: red;      /* cambia a rojo brillante */
+
+  
+  /* ---Css para el Boton atras dentro de fotos--- */
+
+}
+.boton-atras {
+  position: fixed;        /* lo saca del flujo normal */
+  bottom: 20px;           /* lo separa del borde inferior */
+  left: 50%;              /* lo coloca al centro horizontal */
+  transform: translateX(-50%); /* centra exactamente */
+  padding: 10px 20px;     /* tamaño del botón */
+  font-size: 18px;        /* tamaño del texto */
+  font-weight: bold;      /* negrita */
+  background-color: darkred;
+  color: white;           /* texto blanco */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 1001;          /* encima de la galería */
+}
+
+.boton-atras:hover {
+  background-color: red;
+}
+
+/* ---------------------- ul{} ----------------------- */
+
+.clases-container ul {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  text-align: left;
+  list-style: disc;
+  padding-left: 20px;
+}
+
+/* Estilos para el Boton Fotos */
+
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* centra las imágenes */
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.foto-item {
+  width: 150px;           /* tamaño pequeño */
+  height: auto;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.foto-item:hover {
+  transform: scale(1.05); /* efecto ligero al pasar el mouse */
+}
+
+/* --- Lightbox --- */
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+
+/* Estilos para Flecha Izquierda y Derecha */
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.flecha {
+  position: absolute;
+  top: 50%;
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  transform: translateY(-50%);
+  padding: 10px;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  z-index: 1001;
+}
+
+.flecha.izquierda { left: 20px; }
+.flecha.derecha { right: 20px; }

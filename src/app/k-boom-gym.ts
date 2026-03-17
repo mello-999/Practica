@@ -20,7 +20,8 @@ export class App {
   fotos: string[] = [
     'IMG_20250904_115234_760.jpg',
     'IMG-20250824-WA0068.jpg',
-    'IMG-20250824-WA0073.jpg'
+    'IMG-20250824-WA0073.jpg',
+    'IMG_20250913_152020.jpg'
   ];
 
   mostrarGaleria() {
@@ -31,7 +32,7 @@ export class App {
   verClases: boolean = false;
 
   listaClases = [
-    { Nombre: 'MMA', hora: '19:00' },
+    { Nombre: 'MMA', hora: '22:00' },
     { Nombre: 'Wrestling', hora: '20:00' },
     { Nombre: 'Boxeo', hora: '21:00' },
     { Nombre: 'Físico', hora: '22:00' }
@@ -41,7 +42,49 @@ export class App {
     this.verClases = true;
   }
 
+volverInicio() {
+  this.verClases = false;
+  this.mostrarFotos = false;
+} 
+//--- Para agrandar las fotos dentro del boton fotos--- //
 
+fotoSeleccionada: string | null = null;
+
+// ---Variable nueva para las fotos, flechas siguiente y anterior--- //
+
+
+indiceFoto: number = 0;
+
+// Abrir lightbox y registrar índice
+abrirFoto(indice: number) {
+  this.indiceFoto = indice;
+  this.fotoSeleccionada = this.fotos[indice];
+}
+
+// Siguiente foto
+siguienteFoto() {
+  if (this.indiceFoto < this.fotos.length - 1) {
+    this.indiceFoto++;
+    this.fotoSeleccionada = this.fotos[this.indiceFoto];
+  }
+}
+
+// Foto anterior
+fotoAnterior() {
+  if (this.indiceFoto > 0) {
+    this.indiceFoto--;
+    this.fotoSeleccionada = this.fotos[this.indiceFoto];
+  }
+}
+cerrarLightbox() {
+  this.fotoSeleccionada = null;
+}
+
+// Para ordenar Fotos 
+
+ngOnInit() {
+  this.fotos.sort(); // esto ordena los nombres de menor a mayor
+}
 
 }
 
