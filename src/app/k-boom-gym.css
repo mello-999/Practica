@@ -189,3 +189,14 @@ body {
 
 .flecha.izquierda { left: 20px; }
 .flecha.derecha { right: 20px; }
+
+/* Estilos para Alumnos */
+
+.alumno-item {
+  font-size: 30px;
+  font-weight: bold;
+  color: darkblue;
+  margin-bottom: 10px;
+
+
+}

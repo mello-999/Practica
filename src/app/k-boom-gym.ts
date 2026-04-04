@@ -43,6 +43,7 @@ export class App {
   }
 
 volverInicio() {
+  this.mostrar = false;
   this.verClases = false;
   this.mostrarFotos = false;
 } 
@@ -86,8 +87,20 @@ ngOnInit() {
   this.fotos.sort(); // esto ordena los nombres de menor a mayor
 }
 
-}
+   
+  mostrar = false
 
+  alumnos = [
+    { nombre: 'camilo', edad: 16, categoria: '60 kg.' },
+    { nombre: 'gaspar', edad: 15, categoria: '57 kg.' },
+    { nombre: 'alonso', edad: 15, categoria: '55 kg.' }
+  ];
+
+   mostrarAlumnos() {
+    this.mostrar = !this.mostrar;
+   }
+
+}
 
 
 
