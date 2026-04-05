@@ -49,31 +49,8 @@ body {
   font-size: 33px;     /* tamaño de letra de la hora */
 }
 
-   /* ---Css para el Boton atras dentro de clases--- */
-
-   .boton-atras {
-  display: block;        /* hace que el botón se comporte como bloque */
-  margin: 40px auto 0;   /* arriba 40px, izquierda y derecha auto = centro */
-  margin-top: 20px;          /* separación arriba */
-    padding: 10px 20px;        /* tamaño del botón */
-  font-size: 18px;            /* tamaño del texto */
-  font-weight: bold;        /* Para que las letras se vean en negrita */
-  background-color: darkred;  /* color de fondo */
-  color: darkred;               /* color del texto */
-  border: none;               /* sin borde */
-  border-radius: 8px;         /* bordes redondeados */
-  cursor: pointer;            /* cambia el cursor al pasar el mouse */
-  transition: background 0.3s; /* transición suave al pasar el mouse */
-}
-
-/* Efecto hover (cuando el mouse pasa por encima) */
-.boton-atras:hover {
-  background-color: red;      /* cambia a rojo brillante */
-
   
-  /* ---Css para el Boton atras dentro de fotos--- */
 
-}
 .boton-atras {
   position: fixed;        /* lo saca del flujo normal */
   bottom: 20px;           /* lo separa del borde inferior */
@@ -93,6 +70,8 @@ body {
 
 .boton-atras:hover {
   background-color: red;
+  transform: translateX(-50%) scale(1.05);
+  color: yellow;
 }
 
 /* ---------------------- ul{} ----------------------- */
@@ -197,6 +176,13 @@ body {
   font-weight: bold;
   color: darkblue;
   margin-bottom: 10px;
-
-
 }
+  /* Estilos de la Info de los Alumnos */
+
+  .alumno-info {
+  font-size: 10px;       /* tamaño de letra grande */
+  line-height: 1.6;      /* espacio entre líneas */
+  font-weight: bold;     /* ¡toda la info en negrita! */
+  color: black;       /* opcional: color */
+}
+

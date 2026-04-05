@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
+import { OnInit, OnDestroy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 
@@ -11,7 +12,7 @@ import { RouterOutlet } from '@angular/router';
   standalone: true
   
 })
-export class App {
+export class App implements OnInit, OnDestroy {
   protected readonly title = signal('nombre-del-proyecto');
 
 
@@ -46,6 +47,7 @@ volverInicio() {
   this.mostrar = false;
   this.verClases = false;
   this.mostrarFotos = false;
+  this.fotoSeleccionada = null;
 } 
 //--- Para agrandar las fotos dentro del boton fotos--- //
 
@@ -80,25 +82,48 @@ fotoAnterior() {
 cerrarLightbox() {
   this.fotoSeleccionada = null;
 }
+ 
 
-// Para ordenar Fotos 
-
-ngOnInit() {
-  this.fotos.sort(); // esto ordena los nombres de menor a mayor
-}
-
-   
   mostrar = false
 
+  alumnoSeleccionado: any | null = null;
+
   alumnos = [
-    { nombre: 'camilo', edad: 16, categoria: '60 kg.' },
-    { nombre: 'gaspar', edad: 15, categoria: '57 kg.' },
-    { nombre: 'alonso', edad: 15, categoria: '55 kg.' }
+    { nombre: 'Camilo', edad: 16, categoria: '60 kg.', club: 'K-boom', ciudad: 'Los Andes', record: '5-0', fotos: '/IMG_camilo.jpg' },
+    { nombre: 'Gaspar', edad: 15, categoria: '57 kg.', club: 'K-boom', ciudad: 'Los Andes', record: '4-0', fotos: '/IMG_gaspar.jpg' },
+    { nombre: 'Alonso', edad: 15, categoria: '55 kg.', club: 'K-boom', ciudad: 'Los Andes', record: '6-0', fotos: '/IMG_alonso.jpg' }
   ];
 
    mostrarAlumnos() {
     this.mostrar = !this.mostrar;
    }
+
+verAlumno(alumno: any) {
+  this.alumnoSeleccionado = alumno;   // Guarda todo el alumno
+  this.fotoSeleccionada = alumno.fotos; // Opcional: también muestra la foto
+}
+
+cerrarAlumno() {
+  this.alumnoSeleccionado = null;
+  this.fotoSeleccionada = null; // Opcional: cierra la foto también
+}
+
+private scrollListener: () => void = () => {
+  const btn = document.querySelector('.boton-atras') as HTMLElement;
+  if (btn) { // ejemplo, después de 200px de scroll
+    btn.style.opacity = window.scrollY > 200 ? '0.5' : '1' ; // menos visible
+  }
+};
+
+ngOnInit(): void {
+  this.fotos.sort();
+  
+  window.addEventListener('scroll', this.scrollListener);
+}
+
+ngOnDestroy(): void {
+  window.removeEventListener('scroll', this.scrollListener);
+}
 
 }
 

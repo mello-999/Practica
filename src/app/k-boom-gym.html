@@ -9,18 +9,44 @@
 
 <div *ngIf="mostrar" style="text-align: center; margin-top: 30px;">
   <h2>Lista de Alumnos</h2>
+
   <ul style="display: inline-block; text-align: left; padding-left: 20px;">
     <li *ngFor="let alumno of alumnos"
-    style="margin-bottom: 10px; font-size: 30px; font-weight: bold; color: darkblue;">
+    style="margin-bottom: 10px; font-size: 30px; font-weight: bold; color: darkblue; cursor: pointer;"
+    (click)="verAlumno(alumno)">
       {{ alumno.nombre }} - {{ alumno.edad }} años - {{ alumno.categoria }}
     </li>
   </ul>
   
-  <button class="boton-atras" (click)="volverInicio()">
+  <!-- Sección Alumnos -->
+
+  <div *ngIf="alumnoSeleccionado" style="margin-top: 20px; display: flex; justify-content: center; align-items: center; gap: 20px;">
+
+  <div class="alumno-info" style="text-align: left; font-size: 30px;">
+    <p><strong>Nombre:</strong> {{ alumnoSeleccionado.nombre }}</p>
+    <p><strong>Edad:</strong> {{ alumnoSeleccionado.edad }}</p>
+    <p><strong>Categoría:</strong> {{ alumnoSeleccionado.categoria }}</p>
+    <p><strong>Club:</strong> {{ alumnoSeleccionado.club }}</p>
+    <p><strong>Ciudad:</strong> {{ alumnoSeleccionado.ciudad }}</p>
+    <p><strong>Récord:</strong> {{ alumnoSeleccionado.record }}</p>
+  </div>
+    
+    <div>
+      <img [src]="alumnoSeleccionado.fotos" alt="Foto del alumno" style="max-width:300px; border-radius:12px; border:2px solid orange;">
+      <br>
+      <button (click)="cerrarAlumno()"
+      style="margin-top:10px; font-size:18px; padding:10px 20px; border-radius:12px; background-color: orange; color:white; border:none; cursor:pointer;">
+      Cerrar
+    </button>
+  </div>
+</div>
+
+  <button class="boton-atras" *ngIf="!alumnoSeleccionado" (click)="volverInicio()">
     Atrás
   </button>
 
 </div>
+
 
 
 <div *ngIf="!verClases  && !mostrarFotos && !mostrar" style=
