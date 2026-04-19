@@ -8,6 +8,21 @@
 <!-- Botones del Inicio /Alumnos/Fotos y Clases -->
 
 <div *ngIf="mostrar" style="text-align: center; margin-top: 30px;">
+
+<h3>Agregar Alumno</h3>
+
+<input [(ngModel)]="nuevoAlumno.nombre" placeholder="Nombre">
+<input [(ngModel)]="nuevoAlumno.edad" placeholder="Edad">
+<input [(ngModel)]="nuevoAlumno.categoria" placeholder="Categoría">
+<input [(ngModel)]="nuevoAlumno.club" placeholder="Club">
+<input [(ngModel)]="nuevoAlumno.ciudad" placeholder="Ciudad">
+<input [(ngModel)]="nuevoAlumno.record" placeholder="Record">
+<input [(ngModel)]="nuevoAlumno.fotos" placeholder="Foto">
+
+<button (click)="agregarAlumno()">Guardar Alumno</button>
+
+
+
   <h2>Lista de Alumnos</h2>
 
   <ul style="display: inline-block; text-align: left; padding-left: 20px;">

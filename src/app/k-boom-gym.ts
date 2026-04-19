@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { OnInit, OnDestroy } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { UsuariosService } from './services/usuarios.service';
 import { RouterOutlet } from '@angular/router';
 
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, ],
   templateUrl: './k-boom-gym.html',
   styleUrls: ['./k-boom-gym.css',],
   standalone: true
@@ -15,6 +17,7 @@ import { RouterOutlet } from '@angular/router';
 export class App implements OnInit, OnDestroy {
   protected readonly title = signal('nombre-del-proyecto');
 
+  nombre: string = '';
 
   mostrarFotos: boolean = false;
 
@@ -83,16 +86,13 @@ cerrarLightbox() {
   this.fotoSeleccionada = null;
 }
  
+constructor(private usuariosService: UsuariosService) {}
 
   mostrar = false
 
   alumnoSeleccionado: any | null = null;
 
-  alumnos = [
-    { nombre: 'Camilo', edad: 16, categoria: '60 kg.', club: 'K-boom', ciudad: 'Los Andes', record: '5-0', fotos: '/IMG_camilo.jpg' },
-    { nombre: 'Gaspar', edad: 15, categoria: '57 kg.', club: 'K-boom', ciudad: 'Los Andes', record: '4-0', fotos: '/IMG_gaspar.jpg' },
-    { nombre: 'Alonso', edad: 15, categoria: '55 kg.', club: 'K-boom', ciudad: 'Los Andes', record: '6-0', fotos: '/IMG_alonso.jpg' }
-  ];
+ alumnos: any[] = [];
 
    mostrarAlumnos() {
     this.mostrar = !this.mostrar;
@@ -117,12 +117,47 @@ private scrollListener: () => void = () => {
 
 ngOnInit(): void {
   this.fotos.sort();
-  
+
   window.addEventListener('scroll', this.scrollListener);
 }
 
 ngOnDestroy(): void {
   window.removeEventListener('scroll', this.scrollListener);
+}
+
+
+guardar() {
+  this.usuariosService.crearUsuario(this.nombre).subscribe(res => {
+    console.log('Guardado en BD:', res);
+    this.nombre = '';
+  });
+}
+
+
+
+cargarAlumnos() {
+  this.usuariosService.getAlumnos().subscribe((res: any) => {
+    this.alumnos = res;
+  });
+}
+
+
+nuevoAlumno = {
+  nombre: '',
+  edad: null,
+  categoria: '',
+  club: '',
+  ciudad: '',
+  record: '',
+  fotos: ''
+};
+
+
+agregarAlumno() {
+  this.usuariosService.crearAlumno(this.nuevoAlumno).subscribe(res => {
+    console.log('Alumno agregado:', res);
+    this.cargarAlumnos(); // refresca lista
+  });
 }
 
 }
