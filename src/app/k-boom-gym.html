@@ -11,15 +11,42 @@
 
 <h3>Agregar Alumno</h3>
 
-<input [(ngModel)]="nuevoAlumno.nombre" placeholder="Nombre">
-<input [(ngModel)]="nuevoAlumno.edad" placeholder="Edad">
-<input [(ngModel)]="nuevoAlumno.categoria" placeholder="Categoría">
-<input [(ngModel)]="nuevoAlumno.club" placeholder="Club">
-<input [(ngModel)]="nuevoAlumno.ciudad" placeholder="Ciudad">
-<input [(ngModel)]="nuevoAlumno.record" placeholder="Record">
-<input [(ngModel)]="nuevoAlumno.fotos" placeholder="Foto">
+<div class="input">
+  <input [(ngModel)]="nuevoAlumno.nombre" placeholder="Nombre">
+</div>
+<div class="input">
+  <input class="input-edad" [(ngModel)]="nuevoAlumno.edad" placeholder="Edad">
+</div>
+<div class="input" >
+  <input [(ngModel)]="nuevoAlumno.categoria" placeholder="Categoría">
+</div>
+<div class="input" >
+  <input [(ngModel)]="nuevoAlumno.club" placeholder="Club">
+</div>
+<div class="input" >
+  <input [(ngModel)]="nuevoAlumno.ciudad" placeholder="Ciudad">
+</div>
+<div class="input" >
+  <input [(ngModel)]="nuevoAlumno.record" placeholder="Record">
+</div>
+<div class="input" >
+  <input [(ngModel)]="nuevoAlumno.fotos" placeholder="Foto">
+</div>
 
-<button (click)="agregarAlumno()">Guardar Alumno</button>
+
+<button (click)="agregarAlumno()" 
+style="
+    
+    font-size: 28px;      /* tamaño grande */
+    font-weight: bold;    /* negrita */
+    padding: 15px 40px;   /* tamaño del botón */
+    border-radius: 12px;  /* bordes redondeados */
+    background-color: orange; /* color de fondo */
+    color: white;         /* color del texto */
+    border: none;
+    cursor: pointer;
+  "
+>Guardar Alumno</button>
 
 
 

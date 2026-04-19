@@ -186,3 +186,23 @@ body {
   color: black;       /* opcional: color */
 }
 
+ /* Estilos de las barras donde se escribe */
+
+input {
+  height: 10px;        /* más alto */
+  font-size: 10px;     /* texto más grande */
+  padding: 10px;       /* más espacio interno */
+  border: 2px solid #333;  /* borde más grueso */
+  border-radius: 10px; /* bordes redondeados */
+}
+
+input:focus {
+  border: 2px solid orange;
+  box-shadow: 0 0 8px orange;
+  outline: none;
+  width: 18px;
+}
+
+.input-edad {
+  width: 60px;
+}
