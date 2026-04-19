@@ -14,7 +14,7 @@ import { RouterOutlet } from '@angular/router';
   standalone: true
   
 })
-export class App implements OnInit, OnDestroy {
+export class AppKboomComponent implements OnInit, OnDestroy {
   protected readonly title = signal('nombre-del-proyecto');
 
   nombre: string = '';
@@ -95,7 +95,8 @@ constructor(private usuariosService: UsuariosService) {}
  alumnos: any[] = [];
 
    mostrarAlumnos() {
-    this.mostrar = !this.mostrar;
+    this.mostrar = true;
+    this.cargarAlumnos();
    }
 
 verAlumno(alumno: any) {
@@ -117,7 +118,7 @@ private scrollListener: () => void = () => {
 
 ngOnInit(): void {
   this.fotos.sort();
-
+  this.cargarAlumnos();
   window.addEventListener('scroll', this.scrollListener);
 }
 
@@ -137,6 +138,7 @@ guardar() {
 
 cargarAlumnos() {
   this.usuariosService.getAlumnos().subscribe((res: any) => {
+     
     this.alumnos = res;
   });
 }

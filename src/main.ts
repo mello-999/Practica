@@ -1,9 +1,9 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
-import { App } from './app/k-boom-gym';
+import { AppKboomComponent } from './app/k-boom-gym';
 import { provideHttpClient } from '@angular/common/http';
 
-bootstrapApplication(App, {
+bootstrapApplication(AppKboomComponent, {
   providers: [
     provideHttpClient()
   ]
