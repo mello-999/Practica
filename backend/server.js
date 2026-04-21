@@ -7,6 +7,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'public')));
+
+
 // Conexión a PostgreSQL
 const pool = new Pool({
   user: 'postgres',
@@ -23,9 +27,15 @@ app.get('/', (req, res) => {
 
 // Obtener usuarios
 app.get('/usuarios', async (req, res) => {
-  const result = await pool.query('SELECT * FROM usuarios');
-  res.json(result.rows);
+  try {
+    const result = await pool.query('SELECT * FROM usuarios');
+    res.json(result.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error al obtener usuarios');
+  }
 });
+  
 
 // Guardar usuario
 app.post('/usuarios', async (req, res) => {
@@ -50,7 +60,10 @@ app.post('/usuarios', async (req, res) => {
 // Obtener alumnos
 app.get('/alumnos', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM alumnos');
+    const result = await pool.query(`
+  SELECT id, nombre, edad, categoria, club, ciudad, record, fotos
+  FROM alumnos
+`);
     res.json(result.rows);
   } catch (error) {
     console.error(error);

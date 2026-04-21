@@ -18,7 +18,7 @@
   <input class="input-edad" [(ngModel)]="nuevoAlumno.edad" placeholder="Edad">
 </div>
 <div class="input" >
-  <input [(ngModel)]="nuevoAlumno.categoria" placeholder="Categoría">
+  <input class="input-categoria" [(ngModel)]="nuevoAlumno.categoria" placeholder="Categoría">
 </div>
 <div class="input" >
   <input [(ngModel)]="nuevoAlumno.club" placeholder="Club">
@@ -53,7 +53,7 @@ style="
   <h2>Lista de Alumnos</h2>
 
   <ul style="display: inline-block; text-align: left; padding-left: 20px;">
-    <li *ngFor="let alumno of alumnos"
+    <li *ngFor="let alumno of alumnos" 
     style="margin-bottom: 10px; font-size: 30px; font-weight: bold; color: darkblue; cursor: pointer;"
     (click)="verAlumno(alumno)">
       {{ alumno.nombre }} - {{ alumno.edad }} años - {{ alumno.categoria }}
@@ -74,7 +74,7 @@ style="
   </div>
     
     <div>
-      <img [src]="alumnoSeleccionado.fotos" alt="Foto del alumno" style="max-width:300px; border-radius:12px; border:2px solid orange;">
+      <img [src]="baseUrl + '/alumnos' + alumnoSeleccionado.fotos" alt="Foto del alumno" style="max-width:300px; border-radius:12px; border:2px solid orange;">
       <br>
       <button (click)="cerrarAlumno()"
       style="margin-top:10px; font-size:18px; padding:10px 20px; border-radius:12px; background-color: orange; color:white; border:none; cursor:pointer;">
@@ -170,8 +170,8 @@ style="
 
 <div *ngIf="mostrarFotos" class="galeria-container">
   <div class="galeria">
-    <img *ngFor="let foto of fotos; let i = index"
-     [src]="foto" 
+    <img *ngFor="let alumno of alumnos; let i = index"
+     [src]="baseUrl + '/alumnos' + alumno.fotos" 
      alt="Foto" 
      class="foto-item"
      (click)="abrirFoto(i)">
@@ -184,11 +184,11 @@ style="
 
      <div class="flecha izquierda" *ngIf="indiceFoto > 0" (click)="fotoAnterior()">&#10094;</div>
 
-      <img [src]="fotoSeleccionada" alt="Foto ampliada">
+      <img [src]="baseUrl + '/alumnos' + alumnoSeleccionado.fotos" alt="Foto ampliada">
     
       <!-- Flecha Derecha -->
 
-      <div class="flecha derecha" *ngIf="indiceFoto < fotos.length -1" (click)="siguienteFoto()">&#10095;</div>
+      <div class="flecha derecha" *ngIf="indiceFoto < alumnos.length -1" (click)="siguienteFoto()">&#10095;</div>
 
       <!-- Cerrar hacuiendo clic fuera -->
 

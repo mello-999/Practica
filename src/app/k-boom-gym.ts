@@ -17,16 +17,12 @@ import { RouterOutlet } from '@angular/router';
 export class AppKboomComponent implements OnInit, OnDestroy {
   protected readonly title = signal('nombre-del-proyecto');
 
+  baseUrl = 'http://localhost:3000'
+
   nombre: string = '';
 
   mostrarFotos: boolean = false;
 
-  fotos: string[] = [
-    'IMG_20250904_115234_760.jpg',
-    'IMG-20250824-WA0068.jpg',
-    'IMG-20250824-WA0073.jpg',
-    'IMG_20250913_152020.jpg'
-  ];
 
   mostrarGaleria() {
     this.mostrarFotos = true;
@@ -69,7 +65,7 @@ abrirFoto(indice: number) {
 
 // Siguiente foto
 siguienteFoto() {
-  if (this.indiceFoto < this.fotos.length - 1) {
+  if (this.indiceFoto < this.alumnos.length - 1) {
     this.indiceFoto++;
     this.fotoSeleccionada = this.fotos[this.indiceFoto];
   }
@@ -117,7 +113,6 @@ private scrollListener: () => void = () => {
 };
 
 ngOnInit(): void {
-  this.fotos.sort();
   this.cargarAlumnos();
   window.addEventListener('scroll', this.scrollListener);
 }
@@ -161,6 +156,11 @@ agregarAlumno() {
     this.cargarAlumnos(); // refresca lista
   });
 }
+   
+get fotos() {
+  return this.alumnos.map(a => a.fotos);
+}
+
 
 }
 
