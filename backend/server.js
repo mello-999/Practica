@@ -8,7 +8,8 @@ app.use(cors());
 app.use(express.json());
 
 const path = require('path');
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/galeria', express.static(path.join(__dirname, 'public/galeria')));
+app.use('/alumnos', express.static(path.join(__dirname, 'public/alumnos')));
 
 
 // Conexión a PostgreSQL
@@ -95,3 +96,10 @@ app.listen(3000, () => {
   console.log('Servidor corriendo en http://localhost:3000');
 });
 
+app.get('/galeria', (req, res) => {
+  res.json([
+    '/galeria/foto1.jpg',
+    '/galeria/foto2.jpg',
+    '/galeria/foto3.jpg'
+  ]);
+});
