@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
+const fs = require('fs');
 
 const app = express();
 
@@ -96,10 +97,18 @@ app.listen(3000, () => {
   console.log('Servidor corriendo en http://localhost:3000');
 });
 
+
+
 app.get('/galeria', (req, res) => {
-  res.json([
-    '/galeria/foto1.jpg',
-    '/galeria/foto2.jpg',
-    '/galeria/foto3.jpg'
-  ]);
+  const folderPath = path.join(__dirname, 'public/galeria');
+
+  fs.readdir(folderPath, (err, files) => {
+    if (err) {
+      return res.status(500).json({ error: 'Error leyendo galería' });
+    }
+
+    const imagenes = files.map(file => `/galeria/${file}`);
+    res.json(imagenes);
+  });
 });
+

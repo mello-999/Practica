@@ -131,17 +131,25 @@
 ========================= -->
 <div *ngIf="verClases" style="text-align:center; margin-top:20px;">
 
+<div class="clases-container">
   <h2>Clases del Gym</h2>
-
+  
   <ul>
-    <li *ngFor="let clase of listaClases">
+    <li *ngFor="let clase of listaClases" 
+    style=" color: orange;
+    font-size: 35px;
+    font-weight: bold;
+    margin: 10px 0;
+    ">
       {{ clase.Nombre }} - {{ clase.hora }}
     </li>
   </ul>
-
+  
   <button class="boton-atras" (click)="volverInicio()">
     Atrás
   </button>
+</div>
+
 
 </div>
 
