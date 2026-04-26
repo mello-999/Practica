@@ -55,7 +55,7 @@
 ========================= -->
 <div *ngIf="mostrar" style="text-align:center; margin-top:30px;">
 
-  <h3>Agregar Alumno</h3>
+  <h3 style=" font-size: 40px;">Agregar Alumno</h3>
 
   <input [(ngModel)]="nuevoAlumno.nombre" placeholder="Nombre"><br>
   <input [(ngModel)]="nuevoAlumno.edad" placeholder="Edad"><br>
@@ -67,7 +67,7 @@
 
   <button (click)="agregarAlumno()" style="
     margin-top:10px;
-    font-size:20px;
+    font-size:30px;
     padding:10px 20px;
     background:orange;
     color:white;
@@ -77,12 +77,12 @@
     Guardar Alumno
   </button>
 
-  <h2>Lista de Alumnos</h2>
+  <h2 style="font-size:40px;">Lista de Alumnos</h2>
 
   <ul style="list-style:none; padding:0;">
     <li *ngFor="let alumno of alumnos"
         (click)="verAlumno(alumno)"
-        style="cursor:pointer; font-size:24px; margin:10px;">
+        style="cursor:pointer; font-size:24px; margin:10px; color: orange;">
       {{ alumno.nombre }} - {{ alumno.edad }} años - {{ alumno.categoria }}
     </li>
   </ul>
