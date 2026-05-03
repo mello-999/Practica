@@ -63,8 +63,7 @@ app.post('/usuarios', async (req, res) => {
 app.get('/alumnos', async (req, res) => {
   try {
     const result = await pool.query(`
-  SELECT id, nombre, edad, categoria, club, ciudad, record, fotos
-  FROM alumnos
+  SELECT * FROM alumnos_con_clases
 `);
     res.json(result.rows);
   } catch (error) {

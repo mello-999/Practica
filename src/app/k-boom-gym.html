@@ -82,7 +82,7 @@
   <ul style="list-style:none; padding:0;">
     <li *ngFor="let alumno of alumnos"
         (click)="verAlumno(alumno)"
-        style="cursor:pointer; font-size:24px; margin:10px; color: orange;">
+        style="cursor:pointer; font-size:27px; margin:10px; color: black;  font-weight: bold ;">
       {{ alumno.nombre }} - {{ alumno.edad }} años - {{ alumno.categoria }}
     </li>
   </ul>
@@ -90,14 +90,25 @@
   <!-- DETALLE ALUMNO -->
   <div *ngIf="alumnoSeleccionado" style="margin-top:20px; display:flex; justify-content:center; gap:20px;">
 
-    <div style="text-align:left; font-size:22px;">
+    <div style="text-align:left; font-size:29px; color: yellow;">
       <p><strong>Nombre:</strong> {{ alumnoSeleccionado.nombre }}</p>
       <p><strong>Edad:</strong> {{ alumnoSeleccionado.edad }}</p>
       <p><strong>Categoría:</strong> {{ alumnoSeleccionado.categoria }}</p>
       <p><strong>Club:</strong> {{ alumnoSeleccionado.club }}</p>
       <p><strong>Ciudad:</strong> {{ alumnoSeleccionado.ciudad }}</p>
       <p><strong>Record:</strong> {{ alumnoSeleccionado.record }}</p>
+
+      <p><strong>Total clases:</strong> {{ alumnoSeleccionado.total_clases}} </p>
+
+      <p><strong>Clases:</strong></p>
+      <ul>
+         <li *ngFor="let clase of alumnoSeleccionado.clases.split(', ')">
+             {{ clase }}
+         </li>
+      </ul>
     </div>
+
+
 
     <div>
       <img
