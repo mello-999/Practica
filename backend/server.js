@@ -15,10 +15,10 @@ app.use('/alumnos', express.static(path.join(__dirname, 'public/alumnos')));
 
 // Conexión a PostgreSQL
 const pool = new Pool({
-  user: 'postgres',
+  user: 'kboom_user',
   host: 'localhost',
-  database: 'prueba',
-  password: '123456',
+  database: 'super_kboom_bd',
+  password: '123456789',
   port: 5432,
 });
 
